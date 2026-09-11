@@ -1,0 +1,3 @@
+package de.fit.framework.persistence.entity;
+import jakarta.persistence.*;import java.time.*;
+@Entity @Table(name="termin") public class TerminEntity{@Id @GeneratedValue(strategy=GenerationType.IDENTITY)private Long id;private int sequence;private LocalDateTime startsAt,endsAt;private int durationMinutes;@ManyToOne(fetch=FetchType.LAZY)private PositionEntity position;protected TerminEntity(){}public TerminEntity(int s,LocalDateTime f,LocalDateTime t,int d){sequence=s;startsAt=f;endsAt=t;durationMinutes=d;}void attach(PositionEntity p){position=p;}public int getSequence(){return sequence;}public LocalDateTime getStartsAt(){return startsAt;}public LocalDateTime getEndsAt(){return endsAt;}public int getDurationMinutes(){return durationMinutes;}}
